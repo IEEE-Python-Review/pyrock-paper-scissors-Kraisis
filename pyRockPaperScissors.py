@@ -16,13 +16,13 @@ def Computer():
   """
     choice = "null"
     sel = random.randint(1, 3)
-    if 1 in sel:
+    if sel is 1:
         choice = "rock"
 
-    if 2 in sel:
+    if sel is 2:
         choice = "paper"
 
-    if 3 in sel:
+    if sel is 3:
         choice = "scissors"
 
     # print("The computer selected", choice)
@@ -35,18 +35,33 @@ def Human():
   This function should display a menu, prompting the player to select either rock, paper, or scissors and return what the player 
   selected IN LOWERCASE . If the player selects an invalid option, display the error message "Invalid Play"
   """
-
-    print("1. Rock\n2. Papar\n3. Scissors\n\nChoose the number that corresponds with the move you want to make")
-    sel = play()
+    sel = 1
     choice = "null"
-    if sel is 1:
-        choice = "Rock"
-    if sel is 2:
-        choice = "Papar"
-    if sel is 3:
-        choice = "Scissors"
 
-    choice = sel.lower()
+    while sel is 1 or 2 or 3:
+
+        print("1. Rock\n2. Paper\n3. Scissors\n\nChoose the number that corresponds with the move you want to make")
+        sel = play()
+
+        if sel is '1':
+            choice = "Rock"
+            break
+
+        if sel is '2':
+            choice = "Paper"
+            break
+
+        if sel is '3':
+            choice = "Scissors"
+            break
+
+        if sel is not 1 or 2 or 3:
+            nope = "Invalid Play"
+            print(nope)
+            return nope
+
+    choice = choice.lower()
+
     return choice
 
 
@@ -59,51 +74,52 @@ def main():
   """
 
     player = input("Enter your name: ")
+    compscore = 0
+    humscore = 0
 
     for x in range(0, 50):
         hum = Human()
-        print("Hum is: " + hum)
+        if hum == "Invalid Play":
+            exit(0)
+
         comp = Computer()
-        print(hum + "vs" + comp)
+        print("\n" + hum + " vs " + comp + "\n")
 
-        compscore = 0
-        humscore = 0
-
-        if hum is "rock" and comp is "paper":
+        if hum == "rock" and comp == "paper":
             compscore = compscore + 1
-            print("Computer Won")
-        if hum is "rock" and comp is "scissors":
+            print("Computer Won\n")
+        if hum == "rock" and comp == "scissors":
             humscore = humscore + 1
-            print("You Won")
-        if hum is "rock" and comp is "rock":
-            print("Tied, Try Again")
+            print("You Won\n")
+        if hum == "rock" and comp == "rock":
+            print("Tied, Try Again\n")
 
-        if hum is "paper" and comp is "rock":
+        if hum == "paper" and comp == "rock":
             humscore = humscore + 1
-            print("You Won")
-        if hum is "paper" and comp is "scissors":
+            print("You Won\n")
+        if hum == "paper" and comp == "scissors":
             compscore = compscore + 1
-            print("Computer Won")
-        if hum is "paper" and comp is "paper":
-            print("Tied, Try Again")
+            print("Computer Won\n")
+        if hum == "paper" and comp == "paper":
+            print("Tied, Try Again\n")
 
-        if hum is "scissors" and comp is "paper":
+        if hum == "scissors" and comp == "paper":
             humscore = humscore + 1
-            print("You Won")
-        if hum is "scissors" and comp is "rock":
+            print("You Won\n")
+        if hum == "scissors" and comp == "rock":
             compscore = compscore + 1
-            print("You Won")
-        if hum is "scissors" and comp is "scissors":
-            print("Tied, Try Again")
+            print("Computer Won\n")
+        if hum == "scissors" and comp == "scissors":
+            print("Tied, Try Again\n")
 
-        if humscore is 2:
-            print(player + " score: " + str(humscore))
+        if humscore == 2:
+            print(player + "'s score: " + str(humscore))
             print("Computer score: " + str(compscore))
             print(player + " won the best of 3 match")
             break
 
-        if compscore is 2:
-            print(player + " score: " + str(humscore))
+        if compscore == 2:
+            print(player + "'s score: " + str(humscore))
             print("Computer score: " + str(compscore))
             print("Computer won the best of 3 match")
             break

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../TSA2015SB/.idea/TSA2015SB.iml" filepath="$PROJECT_DIR$/../TSA2015SB/.idea/TSA2015SB.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/pyrock-paper-scissors-Kraisis.iml" filepath="$PROJECT_DIR$/.idea/pyrock-paper-scissors-Kraisis.iml" />
     </modules>
   </component>
